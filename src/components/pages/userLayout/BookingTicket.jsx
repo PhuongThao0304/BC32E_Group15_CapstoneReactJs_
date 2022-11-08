@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, redirect, useActionData, useNavigate, useParams } from "react-router-dom";
+import { Navigate, NavLink, redirect, useActionData, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { bookingTicket, getBookingHistory, getTicketRoomDetail, movieBookingAction, useFilmManage, useUserManage } from "../../../store/filmManage";
 import { useMovieBooking } from "../../../store/filmManage/movieBookingSelector";
-import { CloseCircleOutlined, CloseSquareOutlined } from '@ant-design/icons';
+import { CloseCircleOutlined, CloseSquareOutlined,HomeOutlined  } from '@ant-design/icons';
 import _, { sortBy, first } from "lodash";
 import { Tabs } from 'antd'
 import moment from "moment";
@@ -193,6 +193,10 @@ const App = () => {
           <Tabs.TabPane tab="02. KẾT QUẢ ĐẶT VÉ" key="2">
             <KetQuaDatVe />
           </Tabs.TabPane>
+          <Tabs.TabPane tab={<NavLink to="/home"><HomeOutlined style={{font: 
+        '25px'}}/></NavLink>} key="3">
+            
+          </Tabs.TabPane>
         </Tabs>
 
       </div>
@@ -320,6 +324,7 @@ const Container = styled.div`
       padding: 15px;
       margin: auto;
 
+}
 }
 `
 

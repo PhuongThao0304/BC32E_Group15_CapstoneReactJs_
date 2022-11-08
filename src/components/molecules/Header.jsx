@@ -12,7 +12,10 @@ const Header = () => {
       return (
         <>
        <span className="text-white mr-5"> Xin chào {userLogin.taiKhoan}</span>
-       <Button className="btn_signOut">Đăng xuất</Button>
+       <Button className="btn_signOut" onClick={() => {localStorage.removeItem('User_Login')
+       navigate('/home')
+       window.location.reload()
+       }}>Đăng xuất</Button>
        </>
       )
 
