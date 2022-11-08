@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Footer = () => {
@@ -31,13 +32,12 @@ const Footer = () => {
                   </a>
                 </li>
                 <li className="footer_list">
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
+                  <Link
+                    to="/admin"
                     className="hover:dark:text-violet-400"
                   >
-                    About Us
-                  </a>
+                    Admin
+                  </Link>
                 </li>
                 <li className="footer_list">
                   <a

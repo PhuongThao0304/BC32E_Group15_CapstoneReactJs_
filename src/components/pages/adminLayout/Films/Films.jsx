@@ -1,11 +1,19 @@
 import React, { Fragment } from "react";
 import { Table } from "antd";
-import { AudioOutlined, EditFilled, DeleteFilled, CalendarOutlined } from "@ant-design/icons";
+import {
+    AudioOutlined,
+    EditFilled,
+    DeleteFilled,
+    CalendarOutlined,
+} from "@ant-design/icons";
 import { Input, Space } from "antd";
 import styled from "styled-components";
 import { useFilmManage } from "../../../../store/filmManage/filmManageSelector";
 import { useEffect } from "react";
-import { deleteFilm, getMovieList } from "../../../../store/filmManage/filmManageReducer";
+import {
+    deleteFilm,
+    getMovieList,
+} from "../../../../store/filmManage/filmManageReducer";
 import { useDispatch } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
@@ -49,8 +57,6 @@ const Films = () => {
                 );
             },
             width: "15%",
-            // defaultSortOrder: 'descend',
-            // sorter: (a, b) => a.hinhAnh - b.hinhAnh,
         },
         {
             title: "Name",
@@ -109,9 +115,8 @@ const Films = () => {
                                 style={{ cursor: "pointer" }}
                                 className=" text-orange-600 text-30 p-2 hover:text-orange-200"
                                 onClick={() => {
-                                    if (window.confirm('Do you want to delete ' + film.tenPhim)) {
-                                        //action
-                                        dispatch(deleteFilm(film.maPhim))
+                                    if (window.confirm("Do you want to delete " + film.tenPhim)) {
+                                        dispatch(deleteFilm(film.maPhim));
                                     }
                                 }}
                             >
@@ -123,7 +128,9 @@ const Films = () => {
                                 key={1}
                                 className=" text-green-400 text-30 p-2 hover:text-green-600"
                                 to={`/admin/films/showtimes/${film.maPhim}/${film.tenPhim}`}
-                                onClick={() => { localStorage.setItem('filmParam', JSON.stringify(film)) }}
+                                onClick={() => {
+                                    localStorage.setItem("filmParam", JSON.stringify(film));
+                                }}
                             >
                                 <CalendarOutlined />
                             </NavLink>
@@ -143,9 +150,9 @@ const Films = () => {
     const { Search } = Input;
 
     const onSearch = (value) => {
-        console.log(value)
+        console.log(value);
         //
-        dispatch(getMovieList(value))
+        dispatch(getMovieList(value));
     };
 
     return (
@@ -154,15 +161,12 @@ const Films = () => {
                 Films Management
             </p>
             <Button>
-                <Link to="/admin/films/addnew" className="text-white hover:text-white">Add New</Link>
+                <Link to="/admin/films/addnew" className="text-white hover:text-white">
+                    Add New
+                </Link>
             </Button>
             <div className="input_search my-20">
-                <Search
-                    placeholder="Film name"
-                    onSearch={onSearch}
-                    enterButton
-
-                />
+                <Search placeholder="Film name" onSearch={onSearch} enterButton />
             </div>
             <Table
                 key={maPhim}
@@ -180,14 +184,13 @@ export default Films;
 const Container = styled.div`
   &.admin_films {
     .input_search {
-        .ant-input-group > .ant-input:first-child, .ant-input-group-addon:first-child{
-            border-color: #fad961;
-
-            
-        }
-        .ant-input{
-                padding: 8px 14px;
-            }
+      .ant-input-group > .ant-input:first-child,
+      .ant-input-group-addon:first-child {
+        border-color: #fad961;
+      }
+      .ant-input {
+        padding: 8px 14px;
+      }
       .ant-btn-primary {
         background-image: linear-gradient(90deg, #fad961 0%, #f76b1c 100%);
         color: #fff;
@@ -207,20 +210,23 @@ const Container = styled.div`
       }
     }
 
-    .ant-table-thead {
-      .ant-table-column-title,
-      .ant-table-cell {
-        font-size: 20px;
-        font-weight: 600;
+    .ant-table {
+      .ant-table-thead {
+        .ant-table-column-title,
+        .ant-table-cell {
+          font-size: 20px;
+          font-weight: 600;
+        }
       }
-    }
 
-    .ant-table-tbody {
-      .ant-table-cell {
-        font-weight: 400;
-        font-size: 16px;
+      .ant-table-tbody {
+        .ant-table-cell {
+          font-weight: 400;
+          font-size: 16px;
+        }
       }
     }
+    
   }
 `;
 

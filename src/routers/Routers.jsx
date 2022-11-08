@@ -45,6 +45,10 @@ const Routers = () => {
       element: <AdminLayout />,
       children: [
         {
+          path: "/admin",
+          element: <Films />,
+        },
+        {
           path: "/admin/dashboard",
           element: <DashBoard />,
         },
