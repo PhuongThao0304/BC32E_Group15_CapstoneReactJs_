@@ -120,6 +120,7 @@ export const getMovieDetail = createAsyncThunk(
         try {
             const result = await filmManageServices.getMovieDetail(movieId)
             return result.data.content
+            
 
         } catch (error) {
             return rejectWithValue(error.response.data)

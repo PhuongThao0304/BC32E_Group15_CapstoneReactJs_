@@ -6,12 +6,13 @@ import { DatePicker } from "antd";
 import { InputNumber } from "antd";
 import { cinemaManageServices } from "../../../../services/cinemaManageServices";
 import { useFormik } from "formik";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 import { ticketBookingService } from "../../../../services/ticketBookingService";
 
 const Showtimes = () => {
     const param = useParams();
+    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues: {
@@ -21,11 +22,13 @@ const Showtimes = () => {
             giaVe: "",
         },
 
-        onSubmit: async (values) => {
+        onSubmit: 
+        async (values) => {
             console.log("values", values);
             try {
-                const result = await ticketBookingService.postFilmShowtimes(values);
-                alert(result.data.content);
+                /*const result = await ticketBookingService.postFilmShowtimes(values);
+                alert(result.data.content);*/
+                navigate('/admin/films')
             } catch (errors) {
                 console.log("errors", errors.response?.data);
             }
@@ -38,7 +41,8 @@ const Showtimes = () => {
     });
     console.log("cinemaSystem", state.cinemaSystem);
 
-    useEffect(async () => {
+    useEffect(() => {
+       async function getCinemaInfo(){
         try {
             let result = await cinemaManageServices.getCinemaSystemInfo();
             setState({
@@ -46,6 +50,8 @@ const Showtimes = () => {
                 cinemaSystem: result.data.content,
             });
         } catch (errors) { }
+       }
+       getCinemaInfo();
     }, []);
 
     const handleChangeCinemaSystem = async (value) => {

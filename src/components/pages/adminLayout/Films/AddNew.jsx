@@ -20,12 +20,14 @@ import { postMovie } from "../../../../store/filmManage/filmManageReducer";
 import { useEffect } from "react";
 import { useFilmManage } from "../../../../store/filmManage/filmManageSelector";
 import { GROUPID } from "../../../../constants/api";
+import { useNavigate } from "react-router-dom";
 
 const AddNew = () => {
     const [componentSize, setComponentSize] = useState("default");
     const [imgSrc, setImgSrc] = useState("");
     const dispatch = useDispatch();
     const { movieList, isFetching, error } = useFilmManage();
+    const navigate = useNavigate()
 
     // useEffect(() => {
     //     dispatch(postMovie())
@@ -58,7 +60,9 @@ const AddNew = () => {
 
             //POST formData
             dispatch(postMovie(formData));
-            alert("Added Successfully!");
+            alert("Added Successfully!")
+            navigate(-1)
+            
         },
     });
 

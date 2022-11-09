@@ -15,7 +15,7 @@ import {
     getMovieList,
 } from "../../../../store/filmManage/filmManageReducer";
 import { useDispatch } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Films = () => {
     //getMovieList
@@ -27,6 +27,7 @@ const Films = () => {
     useEffect(() => {
         dispatch(getMovieList());
     }, []);
+    const navigate = useNavigate()
     // console.log("movieList", movieList);
 
     const columns = [
@@ -116,8 +117,11 @@ const Films = () => {
                                 className=" text-orange-600 text-30 p-2 hover:text-orange-200"
                                 onClick={() => {
                                     if (window.confirm("Do you want to delete " + film.tenPhim)) {
-                                        dispatch(deleteFilm(film.maPhim));
+                                        dispatch(deleteFilm(film.maPhim)
+                                        );
+                                   
                                     }
+                                    // window.location.reload()
                                 }}
                             >
                                 <DeleteFilled />

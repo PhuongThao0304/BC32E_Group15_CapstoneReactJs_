@@ -35,7 +35,10 @@ const EditFilm = () => {
 
     useEffect(() => {
         dispatch(getFilmInfo(param.movieId))
+    
     }, [])
+
+    
 
     const navigate = useNavigate()
 
@@ -74,8 +77,9 @@ const EditFilm = () => {
             dispatch(postFilmInfoChanged(formData))
 
             alert('Updated Successfully!')
-
             navigate('/admin/films')
+
+
 
         }
     })
