@@ -6,9 +6,9 @@ import { useUserManage } from "../../store/filmManage";
 const Header = () => {
   const navigate = useNavigate()
   const {userLogin, isLoggin } = useUserManage()
-
+console.log(isLoggin)
   const renderLogin = () => {
-    if (isLoggin) {
+    if (localStorage.getItem('User_Login')) {
       return (
         <>
        <span className="text-white mr-5"> Xin chào {userLogin.taiKhoan}</span>

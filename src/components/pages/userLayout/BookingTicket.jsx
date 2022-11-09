@@ -12,7 +12,7 @@ import moment from "moment";
 
 const BookingTicket = () => {
 
-  console.log(localStorage.getItem('User_Login'))
+  console.log(JSON.parse(localStorage.getItem('User_Login')))
   const dispatch = useDispatch()
 
 
