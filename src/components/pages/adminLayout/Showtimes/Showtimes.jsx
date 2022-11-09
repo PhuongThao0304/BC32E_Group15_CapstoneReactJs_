@@ -26,8 +26,8 @@ const Showtimes = () => {
         async (values) => {
             console.log("values", values);
             try {
-                /*const result = await ticketBookingService.postFilmShowtimes(values);
-                alert(result.data.content);*/
+                const result = await ticketBookingService.postFilmShowtimes(values)
+                alert(result.data.content)
                 navigate('/admin/films')
             } catch (errors) {
                 console.log("errors", errors.response?.data);
